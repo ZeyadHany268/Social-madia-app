@@ -34,6 +34,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "Social-madia-app",
+        element: (
+          <AuthProtect>
+            <Home />
+          </AuthProtect>
+        ),
+      },
+      {
         path: "home",
         element: (
           <AuthProtect>
@@ -41,6 +49,7 @@ const router = createBrowserRouter([
           </AuthProtect>
         ),
       },
+
       {
         path: "profile",
         element: (
