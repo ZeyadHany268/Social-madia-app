@@ -14,8 +14,8 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { token, setToken } = useContext(TokenContext);
-
+  const { setToken } = useContext(TokenContext);
+  
   const form = useForm<LoginSchemaType>({
     defaultValues: {
       email: "",
