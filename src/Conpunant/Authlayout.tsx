@@ -7,7 +7,6 @@ import {
   type Variants,
 } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import ThemeToggle from "./Themetoggle";
 
 const copy = {
   login: {
