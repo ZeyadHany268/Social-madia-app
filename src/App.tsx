@@ -15,102 +15,97 @@ import NotFound from "./pages/NotFound";
 import UserProfile from "./pages/UserProfile";
 import Bookmarks from "./pages/Bookmarks";
 import Notifications from "./pages/Notifications";
-import  { Toaster } from 'react-hot-toast';
-
-
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "",
+      element: <Layout />,
+      children: [
+        {
+          path: "",
+          element: (
+            <AuthProtect>
+              <Home />
+            </AuthProtect>
+          ),
+        },
+        {
+          path: "home",
+          element: (
+            <AuthProtect>
+              <Home />
+            </AuthProtect>
+          ),
+        },
+
+        {
+          path: "profile",
+          element: (
+            <AuthProtect>
+              <Profile />
+            </AuthProtect>
+          ),
+        },
+
+        {
+          path: "users/:id",
+          element: (
+            <AuthProtect>
+              <UserProfile />
+            </AuthProtect>
+          ),
+        },
+        {
+          path: "bookmarks",
+          element: (
+            <AuthProtect>
+              <Bookmarks />
+            </AuthProtect>
+          ),
+        },
+        {
+          path: "notifications",
+          element: (
+            <AuthProtect>
+              <Notifications />
+            </AuthProtect>
+          ),
+        },
+        {
+          path: "getsinglePost/:id",
+          element: (
+            <AuthProtect>
+              <GetSingelPost />
+            </AuthProtect>
+          ),
+        },
+
+        // Login + Signup بيتشاركوا نفس الـ AuthLayout (ده اللي بيخلّي الانتقال بينهم متحرك)
+        {
+          element: (
+            <LoginProtect>
+              <AuthLayout />
+            </LoginProtect>
+          ),
+          children: [
+            { path: "login", element: <Login /> },
+            { path: "signup", element: <Signup /> },
+          ],
+        },
+        {
+          path: "*",
+          element: <NotFound />,
+        },
+      ],
+    },
+  ],
   {
-    path: "Social-madia-app",
-    element: <Layout />,
-    children: [
-      {
-        path: "",
-        element: (
-          <AuthProtect>
-            <Home />
-          </AuthProtect>
-        ),
-      },
-      {
-        path: "Social-madia-app",
-        element: (
-          <AuthProtect>
-            <Home />
-          </AuthProtect>
-        ),
-      },
-      {
-        path: "home",
-        element: (
-          <AuthProtect>
-            <Home />
-          </AuthProtect>
-        ),
-      },
-
-      {
-        path: "profile",
-        element: (
-          <AuthProtect>
-            <Profile />
-          </AuthProtect>
-        ),
-      },
-
-      {
-        path: "users/:id",
-        element: (
-          <AuthProtect>
-            <UserProfile />
-          </AuthProtect>
-        ),
-      },
-      {
-        path: "bookmarks",
-        element: (
-          <AuthProtect>
-            <Bookmarks />
-          </AuthProtect>
-        ),
-      },
-      {
-        path: "notifications",
-        element: (
-          <AuthProtect>
-            <Notifications />
-          </AuthProtect>
-        ),
-      },
-      {
-        path: "getsinglePost/:id",
-        element: (
-          <AuthProtect>
-            <GetSingelPost />
-          </AuthProtect>
-        ),
-      },
-
-      // Login + Signup بيتشاركوا نفس الـ AuthLayout (ده اللي بيخلّي الانتقال بينهم متحرك)
-      {
-        element: (
-          <LoginProtect>
-            <AuthLayout />
-          </LoginProtect>
-        ),
-        children: [
-          { path: "login", element: <Login /> },
-          { path: "signup", element: <Signup /> },
-        ],
-      },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-    ],
+    basename: "/Social-madia-app",
   },
-]);
+);
 
 function App() {
   return (
