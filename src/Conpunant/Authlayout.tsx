@@ -85,9 +85,7 @@ export default function AuthLayout() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative flex min-h-screen items-center justify-center p-4 sm:p-6">
-        <div className="absolute right-4 top-4 z-10">
-          <ThemeToggle />
-        </div>
+        
 
         <div className="surface grid w-full max-w-5xl overflow-hidden rounded-[28px] lg:grid-cols-5">
           {/* Brand panel (stays mounted while switching) */}
