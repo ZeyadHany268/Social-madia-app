@@ -1,5 +1,14 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Sparkles, LogOut, Home, Bookmark, Bell, UserRound, LogIn, UserPlus } from "lucide-react";
+import {
+  Sparkles,
+  LogOut,
+  Home,
+  Bookmark,
+  Bell,
+  UserRound,
+  LogIn,
+  UserPlus,
+} from "lucide-react";
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -52,12 +61,17 @@ export default function Navbar() {
             <span className="bg-brand-gradient grid h-10 w-10 place-items-center rounded-full text-white shadow-lg shadow-[var(--brand)]/30 transition-transform duration-200 group-hover:rotate-12">
               <Sparkles className="h-5 w-5" />
             </span>
-            <span className="font-display text-lg font-bold text-ink">Connect</span>
+            <span className="font-display text-lg font-bold text-ink">
+              Connect
+            </span>
           </Link>
 
           {/* Desktop nav */}
           {token && (
-            <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+            <nav
+              className="hidden items-center gap-1 md:flex"
+              aria-label="Main"
+            >
               {links.map(({ to, label, icon: Icon }) => (
                 <NavLink
                   key={to}
@@ -75,7 +89,11 @@ export default function Navbar() {
                         <motion.span
                           layoutId="nav-pill"
                           className="absolute inset-0 rounded-full bg-brand-soft"
-                          transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 32,
+                          }}
                         />
                       )}
                       <span className="relative flex items-center gap-2">
@@ -96,22 +114,40 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
+
             {token ? (
               <>
-                <Link to="/profile" className="hidden sm:block" aria-label="My profile">
+                <Link
+                  to="/profile"
+                  className="hidden sm:block"
+                  aria-label="My profile"
+                >
                   <Avatar src={user?.photo} name={user?.name} size={40} ring />
                 </Link>
-                <button onClick={handleLogout} className="icon-btn" aria-label="Log out" title="Log out">
+
+                <button
+                  onClick={handleLogout}
+                  className="icon-btn"
+                  aria-label="Log out"
+                  title="Log out"
+                >
                   <LogOut className="h-[18px] w-[18px]" />
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="btn-ghost !h-10 !border-transparent !bg-transparent max-sm:hidden">
+                <Link
+                  to="/login"
+                  className="btn-ghost !h-10 !border-transparent !bg-transparent max-sm:hidden"
+                >
                   <LogIn className="h-4 w-4" />
                   Sign in
                 </Link>
-                <Link to="/signup" className="btn-primary !h-10 !px-4">
+
+                <Link
+                  to="/signup"
+                  className="btn-primary !h-10 !px-4 max-sm:hidden"
+                >
                   <UserPlus className="h-4 w-4" />
                   Join
                 </Link>
@@ -142,7 +178,9 @@ export default function Navbar() {
               <span className="relative">
                 <Icon className="h-[22px] w-[22px]" />
                 {to === "/notifications" && unread > 0 && (
-                  <span className="badge absolute -top-3 left-3">{unread > 9 ? "9+" : unread}</span>
+                  <span className="badge absolute -top-3 left-3">
+                    {unread > 9 ? "9+" : unread}
+                  </span>
                 )}
               </span>
             </NavLink>

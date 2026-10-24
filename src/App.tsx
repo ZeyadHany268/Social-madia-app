@@ -22,7 +22,7 @@ import  { Toaster } from 'react-hot-toast';
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "Social-madia-app",
     element: <Layout />,
     children: [
       {
